@@ -1,4 +1,15 @@
 const resolvers = {
+  Module: {
+    durationInSeconds: ({ length }) => {
+      return length;
+    }
+  }
+  ,
+  Track: {
+    durationInSeconds: ({ length }) => {
+      return length;
+    }
+  },
   Query: {
     // returns an array of Tracks that will be used to populate the homepage grid of our web client
     tracksForHome: (_, __, { dataSources }) => {
