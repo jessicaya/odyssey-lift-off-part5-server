@@ -5,11 +5,13 @@ const resolvers = {
     }
   }
   ,
-  Track: {
-    durationInSeconds: ({ length }) => {
-      return length;
-    }
-  },
+  // Track: {
+  //   durationInSeconds: (parent) => {
+  //     console.log(`parent for track: ${JSON.stringify(parent)}`)
+  //     const { length } = parent;
+  //     return length;
+  //   }
+  // },
   Query: {
     // returns an array of Tracks that will be used to populate the homepage grid of our web client
     tracksForHome: (_, __, { dataSources }) => {
@@ -55,6 +57,10 @@ const resolvers = {
     modules: ({ id }, _, { dataSources }) => {
       return dataSources.trackAPI.getTrackModules(id);
     },
+    durationInSeconds: (parent) => {
+      const { length } = parent;
+      return length;
+    }
   },
 };
 
